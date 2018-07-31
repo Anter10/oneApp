@@ -4,6 +4,7 @@ import {  NavigationActions } from 'react-navigation'; // Version can be specifi
 
 let normalfontsize = 15;
 let blackTitleSize = 14;
+
 class BuyItem extends React.Component{
 	constructor(props){
 	   super(props);
@@ -18,18 +19,18 @@ class BuyItem extends React.Component{
 	            routeName: 'bNav',
 	            params: this.item,
 	        });
-	    window.appNavRef.dispatch(navigateAction);
+	    global.appNavRef.dispatch(navigateAction);
 	}
  
 	render(){
 		return(
             <TouchableHighlight style={{flex:1}}  onPress={this.onPress.bind(this)}>
 			<View style={styles.row} >
-	            <Image style={styles.thumb} source={require('.././gyro_header.jpg')} />
+	            <Image style={styles.thumb} source={{uri:this.item.hhicon}} />
 				<View style={styles.leftpart}>
 					  <View style={styles.column} >
-		                    <Text style={styles.item}>买家:<Text style={styles.nameitem}>{this.item.key}</Text>  收购:{this.item.zl} {this.item.dw}</Text>
-		                    <Text style={styles.item}>货物:<Text style={styles.nameitem}>{this.item.spname}</Text><Text style={styles.subnameitem}>({this.item.price} / {this.item.dw})</Text> </Text>
+		                    <Text style={styles.item}>买家:<Text style={styles.nameitem}>{this.item.buyname}</Text>  收购:{this.item.totalbuy} {this.item.hhdanwei}</Text>
+		                    <Text style={styles.item}>货物:<Text style={styles.nameitem}>{this.item.name}</Text><Text style={styles.subnameitem}>({this.item.price} / {this.item.hhdanwei})</Text> </Text>
 					  </View>
 				</View>
 		    </View>
@@ -59,8 +60,8 @@ export default class Seal extends React.Component{
 	            routeName: 'bNav',
 	            params: {},
 	        });
-            // alert(window.BuyappNavRef.push)
-	       window.appNavRef.dispatch(navigateAction)
+            // alert(global.BuyappNavRef.push)
+	       global.appNavRef.dispatch(navigateAction)
 	    };
 		space(){
 		    return(<View style={{height:0.5, flex:1, backgroundColor: 'gray'}}/>)
@@ -71,24 +72,7 @@ export default class Seal extends React.Component{
 	        return(
 	             <View style={styles.container}>
 			        <FlatList
-			          data={[
-			            {key: 'Devin',price:12,dw:'斤',spname:'花椒',zl:"120"},
-			            {key: 'Jackson',price:12,dw:'斤',spname:'花椒',zl:"120"},
-			            {key: 'James',price:12,dw:'斤',spname:'花椒',zl:"120"},
-			            {key: 'Joel',price:12,dw:'斤',spname:'花椒',zl:"120"},
-			            {key: 'John',price:12,dw:'斤',spname:'花椒',zl:"120"},
-			            {key: 'Jillian',price:12,dw:'斤',spname:'花椒',zl:"120"},
-			            {key: 'Jimmy',price:12,dw:'斤',spname:'花椒',zl:"120"},
-			            {key: 'Julie',price:12,dw:'斤',spname:'花椒',zl:"120"},
-			            {key: 'Devdin',price:12,dw:'斤',spname:'花椒',zl:"120"},
-			            {key: 'Jacdskson',price:12,dw:'斤',spname:'花椒',zl:"120"},
-			            {key: 'Jamdses',price:12,dw:'斤',spname:'花椒',zl:"120"},
-			            {key: 'Jodsel',price:12,dw:'斤',spname:'花椒',zl:"120"},
-			            {key: 'Jodshn',price:12,dw:'斤',spname:'花椒',zl:"120"},
-			            {key: 'Jidsllian',price:12,dw:'斤',spname:'花椒',zl:"120"},
-			            {key: 'Jiddsmmy',price:12,dw:'斤',spname:'花椒',zl:"120"},
-			            {key: 'Juldsie',price:12,dw:'斤',spname:'花椒',zl:"120"}, 
-			          ]}
+			          data={[{"buystatue":"0","totalbuy":"500","addtime":"20180624","hadbuy":"0","buyname":"郭有超","buyphone":"15810757355","hhdanwei":"斤","hhid":"201800001","id":"1","userphone":"15810757355","price":"20元","name":"柑橘","hhcstatue":"0","hhicon":"https://img13.360buyimg.com/n5/jfs/t20263/275/220661666/219832/deddf40a/5b04c440Nea327bb9.jpg","hhxsl":"0","hhinfo":"云南柑橘 好吃美味 酸甜可口。"},{"buystatue":"0","totalbuy":"500","addtime":"20180624","hadbuy":"0","buyname":"郭有超","buyphone":"15810757355","hhdanwei":"斤","hhid":"201800002","id":"2","userphone":"15810757355","price":"20元","name":"芒果","hhcstatue":"0","hhicon":"https://img12.360buyimg.com/n5/jfs/t19792/160/919182218/384699/e5d554f5/5ab074bbN95a0da9c.jpg","hhxsl":"0","hhinfo":"广西芒果，满足你的口味，好好品尝。"}]}
 			          ItemSeparatorComponent={this.space}
 			          renderItem={({item}) =>
 			           <View style={styles.row}>

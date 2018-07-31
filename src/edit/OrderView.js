@@ -2,9 +2,7 @@ import React from 'react'
 import {Modal, Image, Button, View,TouchableHighlight, Text,AppRegistry, FlatList, StyleSheet} from 'react-native'
 import {  NavigationActions } from 'react-navigation'; // Version can be specified in package.json
 import Ionicons from 'react-native-vector-icons/Ionicons'; // Version can be specified in package.json
-
-
-
+import SegmentedControlTab from 'react-native-segmented-control-tab'
 let normalfontsize = 15;
 let blackTitleSize = 14;
 
@@ -22,10 +20,11 @@ class Order extends React.Component{
 	            routeName: 'bNav',
 	            params: this.item,
 	        });
-	    window.appNavRef.dispatch(navigateAction);
+	    global.appNavRef.dispatch(navigateAction);
 	}
 	render(){
 		return (
+
 			 
                     <TouchableHighlight style={{flex:1}}  onPress={this.onPress.bind(this)}>
 					<View style={styles.row} >
@@ -48,17 +47,34 @@ export default class OrderView extends React.Component{
 	space(){
 		    return(<View style={{height:0.5, flex:1, backgroundColor: 'gray'}}/>)
 	};
+   constructor(){
+      super()
+      this.state = {
+        selectedIndex: 0,
+      };
+    }
+
+     handleIndexChange = (index) => {
+            this.setState({
+               selectedIndex: index,
+            });
+           }
+
 	render(){
 		return(
            <View style={styles.container}>
-		            
-			        <FlatList
+        
+            <SegmentedControlTab
+                    values={['待处理订单', '完成订单', '取消订单']}
+                    selectedIndex={this.state.selectedIndex}
+                    onTabPress={this.handleIndexChange}
+                    />
+		           <FlatList
 			          data={[
 			            {key: '碗豆浆',value:'12',dw:'元',spname:'花椒'},
 			            {key: '家做豆腐',value:'12',dw:'元',spname:'花椒'},
 			            {key: '青椒',value:'12',dw:'元',spname:'花椒'},
 			            {key: '红薯',value:'12',dw:'元',spname:'花椒'},
-			           
 			          ]}
 			          ItemSeparatorComponent={this.space}
 			          renderItem={({item}) =>

@@ -1,21 +1,30 @@
 import React from 'react'
-import {Modal, Image, Button, View,TouchableHighlight, Text,AppRegistry, FlatList, StyleSheet} from 'react-native'
-import {  NavigationActions } from 'react-navigation'; // Version can be specified in package.json
-import Ionicons from 'react-native-vector-icons/Ionicons'; // Version can be specified in package.json
+import { AppRegistry,Button, StyleSheet, View } from 'react-native'
+import Video from 'react-native-af-video-player'
 
+const styles = StyleSheet.create({
+  container: {
+    
+    justifyContent: 'center'
+  }
+})
 
+const url = 'http://172.20.10.4:8080/updata/res/ExcelData/name.mp4'
 
-export default class SealHh extends React.Component{
-	static navigationOptions = ({ navigation }) => {
-	   return {
-		 title: navigation.getParam('show', 'A Nested Details Screen'),
-	   };
-	};
-	render(){
-		return(
-           <Text>
-                  this is Edit view;
-           </Text>
-		);
-	}
+export default class VideoExample extends React.Component {
+  
+  componentDidMount() {
+
+  }
+
+  render() {
+    return (
+      <View style={styles.container}>
+         <Video autoPlay={true} url={url} ref={(ref) => { this.video = ref }} />
+         <Button onPress={() => this.video.play()} title="Play"></Button>
+          <Button onPress={() => this.video.pause()} title="Pause"></Button>
+      </View>
+    )
+  }
 }
+

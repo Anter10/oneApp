@@ -1,9 +1,9 @@
 import React from 'react'
-import {Modal, Image, Button, View,TouchableHighlight, Text,AppRegistry, FlatList, StyleSheet} from 'react-native'
+import {Modal, Image, Button, View,TouchableHighlight,Dimensions, Text,AppRegistry, FlatList, StyleSheet} from 'react-native'
 import {  NavigationActions } from 'react-navigation'; // Version can be specified in package.json
 import Ionicons from 'react-native-vector-icons/Ionicons'; // Version can be specified in package.json
 
-
+const {height, width} = Dimensions.get('window');
 let normalfontsize = 15;
 let blackTitleSize = 14;
 
@@ -13,23 +13,7 @@ class KaQuan extends React.Component{
 	   this.item = this.props.data;
        this.onPress.bind(this);
 	}
-	componentDidMount(){
-	    navigator.geolocation.getCurrentPosition(
-	      (position) => {
-	        var initialPosition = JSON.stringify(position);
-	        
-	        this.setState({initialPosition});
-	      },
-	      (error) => alert(error.message),
-	      {enableHighAccuracy: true, timeout: 2000000, maximumAge: 1000}
-	    ); 
-	    this.watchID = navigator.geolocation.watchPosition((position) => {
-	      var lastPosition = JSON.stringify(position);
-	      // 获得地理位置信息
-	      
-	    })
-	  }
-
+	 
 	onPress(){ 
       
         const navigateAction = NavigationActions.navigate({
@@ -37,7 +21,7 @@ class KaQuan extends React.Component{
 	            routeName: 'bNav',
 	            params: this.item,
 	        });
-	    window.appNavRef.dispatch(navigateAction);
+	    global.appNavRef.dispatch(navigateAction);
 	}
  
 	render(){
@@ -64,22 +48,22 @@ export default class KaQuanView extends React.Component{
 	 };
 	render(){
 		return(
-           <View style={styles.container}>
-		            
+           <View style={styles.container}> 
 			        <FlatList
 			          data={[
-			            {key: '现金红包',value:'12',dw:'元',spname:'花椒'},
-			            {key: '现金红包',value:'12',dw:'元',spname:'花椒'},
-			            {key: '现金红包',value:'12',dw:'元',spname:'花椒'},
-			            {key: '现金红包',value:'12',dw:'元',spname:'花椒'},
 			           
 			          ]}
+                ListEmptyComponent ={
+                        () => 
+                        <View style={{flex:1,justifyContent:'center',alignItems:'center'}}>
+                              <Text  style={{flex:1,justifyContent:'center',alignItems:'center',marginTop:height/3,fontSize:18}}>当前卡包没有任何卡券。</Text>
+                        </View>
+                }
 			          ItemSeparatorComponent={this.space}
 			          renderItem={({item}) =>
 			           <View style={styles.row}>
 			                 <KaQuan data={item} />
 			           </View>
-			            
 			          }
 			        />
              </View>

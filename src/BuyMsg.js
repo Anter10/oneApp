@@ -8,14 +8,14 @@ export default class BuyMsg extends React.Component{
          	this.state = {
          		hidebar:true,
          	}
-         	this.title = this.props.navigation.getParam('spname', '商品名称');
+         	this.title = this.props.navigation.getParam('name', '商品名称');
          	titleName = this.title;
          	
          }
      	 
 		  static navigationOptions = ({ navigation }) => {
 		    return {
-		      title: navigation.getParam('spname', 'A Nested Details Screen'),
+		      title: navigation.getParam('name', 'A Nested Details Screen'),
 		    };
 		  };
 
@@ -29,7 +29,7 @@ export default class BuyMsg extends React.Component{
 	            params: {},
 	        });
 	        alert(this.props.navigation.push)
-	        window.BuyappNavRef.dispatch(navigateAction)
+	        global.BuyappNavRef.dispatch(navigateAction)
 	    };
 
         render(){

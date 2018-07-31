@@ -19,17 +19,15 @@ class BuyItem extends React.Component{
                 routeName: 'bNav',
                 params: this.item,
             });
-        window.appNavRef.dispatch(navigateAction);
+        global.appNavRef.dispatch(navigateAction);
     }
  
     render(){ 
         return(
             <TouchableHighlight style={{flex:1}}  onPress={this.onPress.bind(this)}>
             <View style={styles.row} >
-                     
+                      <Ionicons name={this.item.iconname} size={25} style={{marginLeft:15,}}/>
                       <Text style={styles.showtitle}>{this.item.show} </Text>
-                 
-
             </View>
             </TouchableHighlight>
         )
@@ -57,8 +55,8 @@ export default class Message extends React.Component{
                 routeName: 'bNav',
                 params: {},
             });
-            // alert(window.BuyappNavRef.push)
-           window.appNavRef.dispatch(navigateAction)
+            // alert(global.BuyappNavRef.push)
+           global.appNavRef.dispatch(navigateAction)
         };
         space(){
             return(<View style={{height:0.5, flex:1, backgroundColor: 'gray'}}/>)
@@ -70,11 +68,8 @@ export default class Message extends React.Component{
                  <View style={styles.container}>
                     <FlatList
                       data={[
-                         {show: '呈明',iconname:"md-person"},
-                        {show: '王旭',iconname:"ios-paper"},
-                        {show: '李玉刚',iconname:"md-basket"},
-                        {show: '费玉清',iconname:"md-card"},
-                        {show: '刘烨分',iconname:"md-settings"},
+                        {show: '系统消息',iconname:"ios-notifications-outline"},
+                        {show: '卖家消息',iconname:"ios-paper"},
                       ]}
                       ItemSeparatorComponent={this.space}
                       renderItem={({item}) =>

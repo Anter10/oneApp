@@ -39,20 +39,22 @@ class EditViewRow extends React.Component{
         
 	}
 	onPress(){
-	
+	  alert("click");
     }
 	render(){
 		return( 
-		         <View>
-			         <View style={{height:15, flex:1, backgroundColor: 'lightgray'}}/>
-				     <TouchableHighlight style={{flex:1,height:40,}}>
+		          
+			         <View>
+				         <View style={{height:15, flex:1, backgroundColor: '#E9E9EF'}}/>
+					     <TouchableHighlight style={{flex:1,height:40,}} onPress={this.onPress.bind(this)}>
 
-				     <View  style={styles.editrow}>
-				          <Text style={{marginLeft:5,}}>{this.props.item.title}</Text>
-					 </View> 
-					 </TouchableHighlight>
-				 </View>
-		   
+					     <View  style={styles.editrow}>
+					          <Text style={{marginLeft:5,}}>{this.props.item.title}</Text>
+						 </View> 
+						 </TouchableHighlight>
+					 </View>
+				 
+		    
 		)
 	}
 }
@@ -64,7 +66,7 @@ export default class EditView extends React.Component{
 	   };
 	};
     space(){
-	  return(<View style={{height:0.5, flex:1, backgroundColor: 'gray'}}/>)
+	  return(<View style={{height:0.5, flex:1, backgroundColor: 'ghostwhite'}}/>)
 	};
 	render(){
 		return(
@@ -72,13 +74,9 @@ export default class EditView extends React.Component{
 	          <SectionList
 	              ListHeaderComponent={()=><EditHeader />}
 				  renderItem={({item, index, section}) => <EditViewRow item={item} />}
-				  // renderSectionHeader={({section: {title}}) => (
-				  //    <EditSectionHeader data={{title:title}}/>
-				  // )}
 				  sections={[
 				    {title: 'Title1', data: [{title:'关于'},{title:'检查更新'}]},
 				  ]}
-                  // ItemSeparatorComponent={this.space}
 				  keyExtractor={(item, index) => item + index}
 				/>
           </View>

@@ -7,10 +7,56 @@
     "test": "jest"
   },
   "dependencies": {
+    "@unpourtous/react-native-search-list": "^2.0.10",
+    "appcenter": "^1.6.0",
+    "appcenter-analytics": "^1.6.0",
+    "appcenter-crashes": "^1.6.0",
+    "appcenter-push": "^1.6.0",
+    "rc-input-number": "^4.0.12",
     "react": "16.3.1",
     "react-native": "0.55.4",
+    "react-native-af-video-player": "^0.2.1",
+    "react-native-animatable": "^1.3.0",
+    "react-native-bottom-action-sheet": "0.0.16",
+    "react-native-checkbox": "^2.0.0",
+    "react-native-collapsible": "^0.12.0",
+    "react-native-country-picker-modal": "^0.6.0",
+    "react-native-deck-swiper": "^1.5.17",
+    "react-native-fetch-blob": "^0.10.8",
+    "react-native-flat-button": "^1.0.6",
+    "react-native-image-picker": "^0.26.10",
+    "react-native-input-scroll-view": "^1.6.7",
+    "react-native-item-cell": "^1.6.2",
+    "react-native-looped-carousel": "^0.1.13",
+    "react-native-modal": "^6.1.0",
+    "react-native-modal-dropdown": "^0.6.2",
+    "react-native-orientation": "^3.1.3",
+    "react-native-pdf": "^3.0.16",
+    "react-native-phone-call": "^1.0.7",
+    "react-native-picker": "^4.3.7",
+    "react-native-picker-select": "^3.1.3",
+    "react-native-popup-menu": "^0.13.2",
+    "react-native-progress": "^3.5.0",
+    "react-native-pullview": "^1.0.7",
+    "react-native-read-more-text": "^1.1.0",
+    "react-native-search-header": "^0.2.7",
+    "react-native-searchbar": "^1.15.0",
+    "react-native-segmented-control-tab": "^3.2.2",
+    "react-native-select-plus": "^0.1.9",
+    "react-native-simple-radio-button": "^2.7.2",
+    "react-native-snap-carousel": "^3.7.2",
+    "react-native-star-view": "^1.1.3",
+    "react-native-storage": "^0.2.2",
+    "react-native-swiper": "^1.5.13",
+    "react-native-switch-selector": "^1.1.8",
+    "react-native-tab-view": "^1.0.2",
+    "react-native-ui-lib": "^3.3.135",
     "react-native-vector-icons": "^4.6.0",
-    "react-navigation": "^2.3.1"
+    "react-native-video": "^2.3.1",
+    "react-native-video-player": "^0.9.1",
+    "react-navigation": "^2.3.1",
+    "redux-persist": "^5.10.0",
+    "rn-number-input": "0.0.2"
   },
   "devDependencies": {
     "babel-jest": "23.0.1",
@@ -19,6 +65,12 @@
     "react-test-renderer": "16.3.1"
   },
   "jest": {
-    "preset": "react-native"
+    "preset": "react-native",
+    "setupFiles": [
+      "./node_modules/appcenter/test/AppCenterMock.js",
+      "./node_modules/appcenter-analytics/test/AppCenterAnalyticsMock.js",
+      "./node_modules/appcenter-crashes/test/AppCenterCrashesMock.js",
+      "./node_modules/appcenter-push/test/AppCenterPushMock.js"
+    ]
   }
 }
